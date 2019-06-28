@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Perfil do cliente</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list lines="none">
+
+    <ion-item [routerLink]="[ '/tabs/addCliente', id]">
+      <img [src]="cliente.foto" alt="" *ngIf="cliente.foto != null">
+      <img src="/assets/perfil.jpg" alt="" *ngIf="cliente.foto == null">
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Nome</ion-label>
+      <ion-text>{{cliente.nome}}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>E-mail</ion-label>
+      <ion-text>{{cliente.email}}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>Ativo</ion-label>
+      <ion-text>{{cliente.ativo}}</ion-text>
+    </ion-item>
+
+  </ion-list>
+</ion-content>

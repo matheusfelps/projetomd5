@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Dados do Serviço</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form #fc="ngForm" (ngSubmit)="onSubmit(fc)">
+    <ion-item>
+      <ion-label position="floating">Descricao</ion-label>
+      <ion-input type="text" name="descricao" [(ngModel)]="servico.descricao" #nome="ngModel" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Tipo</ion-label>
+      <ion-input type="text" name="tipo" [(ngModel)]="servico.tipo" #tipo="ngModel" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Valor</ion-label>
+      <ion-input type="number" name="valor" [(ngModel)]="servico.valor" #valor="ngModel" required></ion-input>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label>Aberto</ion-label>
+      <ion-toggle color="primary" name="ativo" [(ngModel)]="servico.ativo" checked #ativo="ngModel"></ion-toggle>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-button type="submit" color="primary" [disabled]="fc.invalid">Salvar</ion-button>
+      <ion-button type="reset" [routerLink]="[('/tabs/tab3')]" color="primary">Cancelar</ion-button>
+
+      <ion-button color="warning" (click)="tirarFoto()">
+        <ion-icon slot="icon-only" name="camera"></ion-icon>
+      </ion-button>
+      
+    </ion-item>
+  </form>
+
+  <ion-slides pager="true" [options]="slideOpts" *ngIf="preview">
+    <ion-slide *ngFor="let p of preview">
+      <img [src]="p" alt="">
+    </ion-slide>
+  </ion-slides>
+  
+</ion-content>

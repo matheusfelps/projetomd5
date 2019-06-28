@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title slot="start">
+      Controle de Serviço
+    </ion-title>
+    <ion-title slot="end">
+      <ion-icon name="person" [routerLink]="['/tabs/login']"></ion-icon>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <div id="map_canvas">
+    <ion-button (click)="localAtual()">
+      Atual
+    </ion-button>
+  </div>
+  
+</ion-content>

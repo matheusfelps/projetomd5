@@ -1,0 +1,7 @@
+{
+  "name": "ionic-ctrlOS20183",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

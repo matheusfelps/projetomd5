@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Perfil do Serviço</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list lines="none">
+
+     <ion-item [routerLink]="[ '/tabs/addServico', id]">
+      <ion-label>Descrição</ion-label>
+      <ion-text>{{servico.descricao}}</ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Ativo</ion-label>
+      <ion-text>{{servico.ativo}}</ion-text>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label>Valor</ion-label>
+      <ion-text>{{servico.valor}}</ion-text>
+    </ion-item>
+
+    <ion-slides pager="true" [options]="slideOpts" *ngIf="servico.fotos">
+      <ion-slide *ngFor="let f of servico.fotos">
+        <img [src]="f" alt="">
+      </ion-slide>
+    </ion-slides>
+  </ion-list>
+</ion-content>

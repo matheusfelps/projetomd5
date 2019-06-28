@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Dados do Cliente</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item lines="none">
+    <img src="/assets/perfil.jpg" alt="" *ngIf="preview == null" (click)="tirarFoto()">
+    <img [src]="preview" alt="" *ngIf="preview != null" (click)="tirarFoto()">
+  </ion-item>
+
+  <!-- <ion-item lines="none">
+    <ion-button color="warning" (click)="tirarFoto()">
+      <ion-icon slot="icon-only" name="camera"></ion-icon>
+    </ion-button>
+  </ion-item> -->
+
+  <form #fc="ngForm" (ngSubmit)="onSubmit(fc)">
+    <ion-item>
+      <ion-label position="floating">Nome</ion-label>
+      <ion-input type="text" name="nome" [(ngModel)]="cliente.nome" #nome="ngModel" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">E-mail</ion-label>
+      <ion-input type="email" name="email" [(ngModel)]="cliente.email" #email="ngModel" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">CEP</ion-label>
+      <ion-input type="text" name="cep" [(ngModel)]="cep" (keyup)="buscaCEP($event)"
+        maxlength="8" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Endereço</ion-label>
+      <ion-input type="text" name="logradouro" [(ngModel)]="cliente.endereco.logradouro" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Bairro</ion-label>
+      <ion-input type="text" name="bairro" [(ngModel)]="cliente.endereco.bairro" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Cidade</ion-label>
+      <ion-input type="text" name="localidade" [(ngModel)]="cliente.endereco.localidade" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Estado</ion-label>
+      <ion-input type="text" name="uf" [(ngModel)]="cliente.endereco.uf" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Senha</ion-label>
+      <ion-input type="password" name="pws" [(ngModel)]="cliente.pws" #pws="ngModel" minlength="6" required></ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="pws.invalid && pws.dirty">
+      <strong>Senha muito curta!</strong>
+    </ion-text>
+
+    <ion-item>
+      <ion-label position="floating">Confirma Senha</ion-label>
+      <ion-input type="password" name="conf" [(ngModel)]="conf" #c="ngModel" minlength="6" required></ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="pws.value != c.value">
+      <strong>Senhas diferentes!</strong>
+    </ion-text>
+
+    <ion-item lines="none"></ion-item>
+
+    <ion-item lines="none">
+      <ion-button type="submit" color="primary" [disabled]="fc.invalid || (pws.value != c.value)">Salvar</ion-button>
+
+      <ion-button type="reset" [routerLink]="[('/tabs/tab2')]" color="primary">Cancelar</ion-button>
+    </ion-item>
+  </form>
+</ion-content>
